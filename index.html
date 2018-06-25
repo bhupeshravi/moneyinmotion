@@ -20,9 +20,11 @@
                         var obj = JSON.parse(data["result"]);
                         if(obj ==1){
                            alert("News has money in motion transaction")
+                           document.getElementsByClassName('cont')[0].style.cursor="unset";
                     }
                     else{
                         alert("No money in motion involved")
+                        document.getElementsByClassName('cont')[0].style.cursor="unset";
                     }
                         
                     },
