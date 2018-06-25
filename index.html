@@ -1,7 +1,42 @@
 <html>
 <head>
     <title>M&amp;A Check</title>
-<style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+        $(function() {
+         $("#submitaction").click(function(){
+             if(document.getElementById('topic').value == ""){
+                 alert("Please enter your text")
+             }
+             else{
+                document.getElementsByClassName('cont')[0].style.cursor="wait";
+                $.ajax({
+                    url: "https://pythonbse.azurewebsites.net/moneyinmotion",
+                    type: 'POST',
+                    data : $('form').serialize(),
+                    dataType :'json',
+                    crossDomain : true,
+                    success: function (data) {
+                        if(data ==1){
+                           document.getElementsByClassName('cont')[0].style.cursor="unset";
+                           alert("News has money in motion transaction")
+                    }
+                    else{
+                        document.getElementsByClassName('cont')[0].style.cursor="unset";
+                        alert("No money in motion involved")
+                    }
+                        
+                    },
+                    error: function (error) {
+                        alert("Connection to the server is lost... please try again")
+                        document.getElementsByClassName('cont')[0].style.cursor="unset";
+                    }
+                });
+             }
+           });
+        });
+    </script>
+    <style>
     input[type=text], input[type=password] {
     width: 40%;
     padding: 12px 20px;
@@ -26,14 +61,13 @@ button {
 </style>
 
     </head>
-<body>
+<body class="cont" style="cursor: unset;">
 <center><br><h1>M&amp;A prediction</h1><br>
-    <h2>Please enter your news article </h2><br>
-<form action="#">
+    <h2>Please enter your news article to check</h2><br>
+<form method="POST">
 <input type="text" id="topic" placeholder="Topic" /><br><br>
-<textarea id="content" rows="4" cols="50">
-</textarea><br>
-<button id="submitbtn" onClick="alert('No money in motion happening');">Submit</button>
+<textarea id="content" rows="4" cols="50"></textarea><br>
+<button type="button" id="submitaction">Click</button>
 </form></center>
 
 </body>
