@@ -17,7 +17,8 @@
                     dataType :'json',
                     crossDomain : true,
                     success: function (data) {
-                        if(data ==1){
+                        var obj = JSON.parse(data["result"]);
+                        if(obj ==1){
                            alert("News has money in motion transaction")
                     }
                     else{
