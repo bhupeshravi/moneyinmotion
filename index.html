@@ -18,18 +18,15 @@
                     crossDomain : true,
                     success: function (data) {
                         if(data ==1){
-                           document.getElementsByClassName('cont')[0].style.cursor="unset";
                            alert("News has money in motion transaction")
                     }
                     else{
-                        document.getElementsByClassName('cont')[0].style.cursor="unset";
                         alert("No money in motion involved")
                     }
                         
                     },
                     error: function (error) {
                         alert("Connection to the server is lost... please try again")
-                        document.getElementsByClassName('cont')[0].style.cursor="unset";
                     }
                 });
              }
